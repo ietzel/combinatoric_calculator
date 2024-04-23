@@ -1,4 +1,5 @@
 import math
+from tkinter import *
 
 def permutation(n, k) {
   return (math.factorial(n)/math.factorial(n-k)) 
@@ -48,6 +49,13 @@ def balls_and_boxes_problem(balls, boxes, dist_bls, dist_bxs, empty_allowed) {
     permutation(balls, boxes)
   }
 }
+
+root = Tk()
+w = Label(root, text='Combinatoric Calculator')
+w.pack()
+inputtext = tk.Text(root, height = 4, width = 8) 
+inputtext.pack() 
+root.mainloop()
 
 def main():
   items = input("Number of items? ")
