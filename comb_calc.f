@@ -1,33 +1,33 @@
-function permutation(n, k) {
+program permutation(n, k) {
   return (math.factorial(n)/math.factorial(n-k)) 
-}
+end program permutation
 
-function combinatoric(n, k) {
+program combinatoric(n, k)
   return permutation(n, k)/math.factorial(k)))  
-}
+end program combinatoric
 
-function stirling_second_kind(n, k) {
+program stirling_second_kind(n, k)
   sum = 0;
   for x in range(0, k):
     sum += (((-1)^(k-x))*combinatoric(n, x)*(x^n))
   return math.factorial(k)*sum
-}
+end program stirling_second_kind
 
-function permutation_sum(n, k) {
+program permutation_sum(n, k)
   sum = 0;
   for x in range(1, k):
     sum += permutation(n, x)
   return sum
-}
+end program permutation_sum
 
-function stirling_second_kind_sum(n, k) {
+program stirling_second_kind_sum(n, k)
   sum = 0;
   for x in range(1, k):
     sum += stirling_second_kind(n, k)
   return sum
-}
+end program stirling_second_kind_sum
 
-function balls_and_boxes_problem(balls, boxes, dist_bls, dist_bxs, empty_allowed) {
+program balls_and_boxes_problem(balls, boxes, dist_bls, dist_bxs, empty_allowed)
   if(dist_bls) {
     return stirling_second_kind(n, k)
   } else if(dist_bxs) {
@@ -45,9 +45,9 @@ function balls_and_boxes_problem(balls, boxes, dist_bls, dist_bxs, empty_allowed
   } else {
     permutation(balls, boxes)
   }
-}
+end program balls_and_boxes_problem
 
-function main():
+program main
   items = input("Number of items? ")
   items = int(items)
   containers = input("Number of containers? ")
@@ -59,3 +59,4 @@ function main():
   empty_allowed = input("Empty allowed? ")
   empty_allowed = boolean(empty_allowed)
   print("Possible arrangements: " + balls_and_boxes_problem(items, containers, dist_its, dist_cts, empty_allowed) 
+end program main
