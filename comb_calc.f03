@@ -1,6 +1,8 @@
-program permutation(n, k) {
-  return (math.factorial(n)/math.factorial(n-k)) 
-end program permutation
+ subroutine permutation(n, k)   
+   implicit none
+   integer :: n, k
+   RETURN (math.factorial(n)/math.factorial(n-k))
+end subroutine volume
 
 program combinatoric(n, k)
   return permutation(n, k)/math.factorial(k)))  
