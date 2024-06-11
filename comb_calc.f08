@@ -12,7 +12,7 @@ subroutine permutation(n, k)
    implicit none
    integer :: n, k
    RETURN (fact(n)/fact(n-k))
-end subroutine volume
+end subroutine permutation
 
 subroutine combinatoric(n, k)
   implicit none
@@ -82,4 +82,4 @@ subroutine main()
   empty_allowed = input("Empty allowed? ")
   empty_allowed = boolean(empty_allowed)
   print("Possible arrangements: " + balls_and_boxes_problem(items, containers, dist_its, dist_cts, empty_allowed) 
-end subroutine main()
+end subroutine main
