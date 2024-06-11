@@ -1,7 +1,17 @@
- subroutine permutation(n, k)   
+integer function fact(n)
+  integer, intent(in) :: n
+  integer :: i
+  if (n < 0) error stop 'factorial is singular for negative integers'
+  fact = 1
+  do i = 2, n
+    fact = fact * i
+  enddo
+end function fact
+
+subroutine permutation(n, k)   
    implicit none
    integer :: n, k
-   RETURN (math.factorial(n)/math.factorial(n-k))
+   RETURN (fact(n)/fact(n-k))
 end subroutine volume
 
 program combinatoric(n, k)
