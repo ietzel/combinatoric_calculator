@@ -14,52 +14,63 @@ subroutine permutation(n, k)
    RETURN (fact(n)/fact(n-k))
 end subroutine volume
 
-program combinatoric(n, k)
-  return permutation(n, k)/math.factorial(k)))  
-end program combinatoric
+subroutine combinatoric(n, k)
+  implicit none
+  integer :: n, k
+  RETURN permutation(n, k)/fact(k)))  
+end subroutine combinatoric
 
-program stirling_second_kind(n, k)
-  sum = 0;
+subroutine stirling_second_kind(n, k)
+  implicit none
+  integer :: n, k
+  integer sum = 0;
   for x in range(0, k):
     sum += (((-1)^(k-x))*combinatoric(n, x)*(x^n))
-  return math.factorial(k)*sum
-end program stirling_second_kind
+  RETURN math.factorial(k)*sum
+end subroutine stirling_second_kind
 
-program permutation_sum(n, k)
-  sum = 0;
+subroutine permutation_sum(n, k)
+  implicit none
+  integer :: n, k
+  integer sum = 0;
   for x in range(1, k):
     sum += permutation(n, x)
-  return sum
-end program permutation_sum
+  RETURN sum
+end subroutine permutation_sum
 
-program stirling_second_kind_sum(n, k)
-  sum = 0;
+subroutine stirling_second_kind_sum(n, k)
+  implicit none
+  integer :: n, k
+  integer sum = 0;
   for x in range(1, k):
     sum += stirling_second_kind(n, k)
-  return sum
-end program stirling_second_kind_sum
+  RETURN sum
+end subroutine stirling_second_kind_sum
 
-program balls_and_boxes_problem(balls, boxes, dist_bls, dist_bxs, empty_allowed)
+subroutine balls_and_boxes_problem(balls, boxes, dist_bls, dist_bxs, empty_allowed)
+  implicit none
+  integer :: balls, boxes
+  boolean :: dist_bls, dist_bxs, empty_allowed
   if(dist_bls) {
-    return stirling_second_kind(n, k)
+    RETURN stirling_second_kind(n, k)
   } else if(dist_bxs) {
-    return combinatoric(n-1, k-1)
+    RETURN combinatoric(n-1, k-1)
   } else if(empty_allowed) {
-    return permutation_sum(balls, boxes)
+    RETURN permutation_sum(balls, boxes)
   } else if(dist_bls and dist_bxs) {
-    return math.factorial(balls)*stirling_second_kind(n, k)
+    RETURN math.factorial(balls)*stirling_second_kind(n, k)
   } else if(dist_bls and empty_allowed) {
-    return stirling_second_kind_sum(n, k)
+    RETURN stirling_second_kind_sum(n, k)
   } else if(dist_bxs and empty_allowed) {
-    return combinatoric(balls+boxes-1, k)
+    RETURN combinatoric(balls+boxes-1, k)
   } else if(dist_bls and dist_bxs and empty_allowed) {
-    return boxes^balls
+    RETURN boxes^balls
   } else {
     permutation(balls, boxes)
   }
-end program balls_and_boxes_problem
+end subroutine balls_and_boxes_problem
 
-program main
+subroutine main()
   items = input("Number of items? ")
   items = int(items)
   containers = input("Number of containers? ")
@@ -71,4 +82,4 @@ program main
   empty_allowed = input("Empty allowed? ")
   empty_allowed = boolean(empty_allowed)
   print("Possible arrangements: " + balls_and_boxes_problem(items, containers, dist_its, dist_cts, empty_allowed) 
-end program main
+end subroutine main()
